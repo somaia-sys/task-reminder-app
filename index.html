@@ -1,25 +1,125 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <title>الصفحة الرئيسية</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>تسجيل الدخول - تذكّر مهامك</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      height: 100vh;
+    }
+
+    .image-section {
+      flex: 1;
+      background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXtVZcySXcDqYsDTysqU0dpp1sPj_SMqrCOq8iUHnkNCwgLCoGzuZTFVUFVwAGDkVxLKE&usqp=CAU') no-repeat center center;
+      background-size: cover;
+    }
+
+    .form-section {
+      flex: 1;
+      background-color: #f5f5f5;
+      padding: 50px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      text-align: center;
+    }
+
+    .logo h1 {
+      color: #2c3e50;
+      font-size: 26px;
+      margin: 0;
+    }
+
+    .form-section h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .form-section input {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .form-section button {
+      width: 50%;
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .form-section button:hover {
+      background-color: #218838;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      .image-section {
+        height: 200px;
+      }
+
+      .form-section {
+        padding: 30px 10px;
+      }
+
+      .logo h1 {
+        font-size: 22px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>تطبيق تذكّر مهامك</h1>
-        
-        <!-- زر إضافة مهمة جديدة -->
-        <button onclick="window.location.href='add.html'">إضافة مهمة جديدة</button>
 
-        <!-- زر عرض المهام -->
-        <button onclick="window.location.href='list.html'">عرض المهام</button>
+  <div class="image-section"></div>
 
-        <!-- زر عرض ملخص الإنجاز -->
-        <button onclick="window.location.href='summary.html'">عرض ملخص الإنجاز</button>
-
-        <!-- زر "حول التطبيق" -->
-        <button onclick="window.location.href='about.html'">حول التطبيق</button>
+  <div class="form-section">
+    <div class="logo">
+      <h1>تذكّر مهامك</h1>
     </div>
+
+    <h2>تسجيل الدخول</h2>
+    <input type="text" id="username" placeholder="الاسم">
+    <input type="email" id="email" placeholder="البريد الإلكتروني">
+    <button onclick="proceedToHome()">دخول</button>
+  </div>
+
+  <script>
+    function proceedToHome() {
+      const name = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+
+      if (name && email) {
+        localStorage.setItem('userName', name);
+        localStorage.setItem('userEmail', email);
+        window.location.href = 'home.html';
+      } else {
+        alert("يرجى إدخال الاسم والبريد الإلكتروني");
+      }
+    }
+  </script>
+
 </body>
 </html>
+ 
